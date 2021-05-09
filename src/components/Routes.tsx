@@ -7,12 +7,12 @@ import Map from "../screens/map";
 type Props = {};
 const Stack = createStackNavigator();
 
-const Route = (props: Props) => {
+const Routes = (props: Props) => {
   return (
     <>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Map"
+          initialRouteName="Home"
           screenOptions={{
             headerShown: false,
           }}
@@ -25,4 +25,4 @@ const Route = (props: Props) => {
   );
 };
 
-export default Route;
+export default Routes;

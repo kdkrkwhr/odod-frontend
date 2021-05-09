@@ -4,16 +4,18 @@ import { StyleSheet, Text, View } from "react-native";
 import Home from "./src/screens/home";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Route from "./src/components/Route";
+import Routes from "./src/components/Routes";
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+import rootReducer from "./src/store/RootReducer";
 
-const Stack = createStackNavigator();
+const store = configureStore({ reducer: rootReducer });
 
 export default function App() {
   return (
-    // <View style={styles.container}>
-    //   <Text>Hello World2</Text>
-    // </View>
-    <Route />
+    <Provider store={store}>
+      <Routes />
+    </Provider>
   );
 }
 
