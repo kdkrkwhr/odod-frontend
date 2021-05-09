@@ -1,13 +1,16 @@
+import { useNavigation } from "@react-navigation/core";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
 
 type Props = {};
 
 const Map = (props: Props) => {
+  const navigation = useNavigation();
   return (
     <>
       <View style={styles.container}>
         <Text>Map</Text>
+        <Button title="뒤로가기" onPress={() => navigation.goBack()}></Button>
       </View>
     </>
   );

@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +11,8 @@ const Home = (props: Props) => {
   const counter = useSelector((state: RootReducerType) => state.counter);
   const dispatch = useDispatch();
 
+  const navigation = useNavigation();
+
   return (
     <>
       <View style={styles.container}>
@@ -17,6 +20,10 @@ const Home = (props: Props) => {
         <Text>{counter.number}</Text>
         <Button title="증가" onPress={() => dispatch(increase())}></Button>
         <Button title="감소" onPress={() => dispatch(decrease())}></Button>
+        <Button
+          title="맵이동"
+          onPress={() => navigation.navigate("Map")}
+        ></Button>
       </View>
     </>
   );
