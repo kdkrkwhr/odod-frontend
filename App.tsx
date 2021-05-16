@@ -14,6 +14,7 @@ const store = configureStore({ reducer: rootReducer });
 export default function App() {
   return (
     <Provider store={store}>
+      <StatusBar hidden={true} />
       <Routes />
     </Provider>
   );
