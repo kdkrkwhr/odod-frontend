@@ -1,7 +1,8 @@
 import { useNavigation } from "@react-navigation/core";
 import React, { useState, useEffect } from "react";
 import { Button, StyleSheet, Text, View, Dimensions } from "react-native";
-import MapView, { Marker } from 'react-native-maps';
+import MapView from 'react-native-maps';
+import Marker from '../components/util/map/Marker';
 import * as Location from 'expo-location';
 
 type Props = {};
@@ -66,14 +67,13 @@ const Map = (props: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.tools}>
-        <Button title="뒤로가기" onPress={() => navigation.goBack()}></Button>
+        <Button title="뒤로가기" onPress={goBack}></Button>
       </View>
       <MapView style={styles.map} initialRegion={region}>{
         Object.entries(marks).map(([key, mark]: any[]) => (
           <Marker
             key={key}
             coordinate={mark.coordinate}
-            title={mark.title}
           />
         ))
       }</MapView>
