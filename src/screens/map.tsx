@@ -41,6 +41,7 @@ const Map = (props: Props) => {
   };
 
   const getLocation = async () => await Location.getCurrentPositionAsync({ accuracy: 6 });
+  
 
   const focusCurrentPosition = (latitude: number, longitude: number) => {
     setRegion({
