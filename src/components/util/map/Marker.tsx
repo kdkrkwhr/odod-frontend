@@ -12,11 +12,18 @@ interface IProps {
   title?: string;
 };
 
+const round2 = (target: number) => Math.round(target * 100) / 100;
+
 const Marker = ({ coordinate, title }: IProps) => {
+  const onSelect = (event) => {
+    console.log('marker selected');
+  }
   return (
     <MarkerElement
       coordinate={coordinate}
       image={markerImage}
+      title={`${round2(coordinate.latitude)}, ${round2(coordinate.longitude)}`}
+      onSelect={onSelect}
     >
     </MarkerElement>
   );
