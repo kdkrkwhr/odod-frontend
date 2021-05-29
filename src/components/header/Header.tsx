@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { View, Image, Text, StyleSheet } from "react-native";
 import { moderateScale, scale, verticalScale } from "../util/Screen";
@@ -8,10 +9,14 @@ type Props = {
 };
 
 const Header = ({ title }: Props) => {
+  const navigation = useNavigation();
+
   return (
     <>
       <View style={styles.header}>
-        <Image style={styles.backBtn} source={Theme.ic_back} />
+        <View onTouchStart={() => navigation.goBack()}>
+          <Image style={styles.backBtn} source={Theme.ic_back} />
+        </View>
         <Text style={styles.title}>{title}</Text>
         <Image style={styles.gnbBtn} source={Theme.ic_gnb} />
       </View>
@@ -25,7 +30,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     backgroundColor: "black",
-    width: scale(375),
+    width: "100%",
     height: verticalScale(50),
 
     justifyContent: "space-between",

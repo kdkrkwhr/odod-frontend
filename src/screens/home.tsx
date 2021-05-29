@@ -2,6 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
+import Header from "../components/header/Header";
 import { decrease, increase } from "../reducer/CounterReducer";
 import { RootReducerType } from "../store/RootReducer";
 
@@ -15,6 +16,7 @@ const Home = (props: Props) => {
 
   return (
     <>
+      <Header title="HOME"></Header>
       <View style={styles.container}>
         <Text>Home</Text>
         <Text>{counter.number}</Text>
