@@ -9,7 +9,7 @@ import GPSController from "../components/map/GPSController";
 type Props = {};
 
 const Map = (props: Props) => {
-  const { marks, positionText, increateInterval, decreateInterval, region } =
+  const { marks, summarizedData, Interval, region } =
     useGPS();
 
   return (
@@ -20,12 +20,12 @@ const Map = (props: Props) => {
           <MapDisplay region={region} marks={marks} />
         </View>
         <View style={styles.mapDescription}>
-          <Text style={styles.descriptionText}>{positionText}</Text>
+          <Text style={styles.descriptionText}>{summarizedData}</Text>
         </View>
         <View style={styles.gpsController}>
           <GPSController
-            increaseInterval={increateInterval}
-            decreaseInterval={decreateInterval}
+            increaseInterval={Interval.increase}
+            decreaseInterval={Interval.decrease}
           />
         </View>
       </View>
