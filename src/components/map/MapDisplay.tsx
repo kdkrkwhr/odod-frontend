@@ -13,7 +13,7 @@ const MapDisplay = (props: Props) => {
   return (
     <MapView style={styles.map} initialRegion={props.region}>
       {props.marks.map((mark: MarkObject, index: number) => (
-        <Marker key={index} mark={mark} />
+        <Marker key={index} mark={mark} index={index} />
       ))}
     </MapView>
   );
