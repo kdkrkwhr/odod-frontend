@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { Button, StyleSheet, Text, View, Dimensions } from "react-native";
 import MapView from "react-native-maps";
 import Marker from "../components/util/map/Marker";
-import * as Location from "expo-location";
 
 import { MarkObject, useGPS } from "../components/map/useGPS";
 
