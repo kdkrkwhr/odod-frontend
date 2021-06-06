@@ -1,7 +1,7 @@
 import React from 'react';
 import { Marker as MarkerElement } from 'react-native-maps';
 import { StyleSheet, View, Text, Image } from 'react-native';
-import markerImage from '../../../assets/images/marker.png';
+import markerImage from '../../assets/images/marker.png';
 
 interface ICorrdinate {
   latitude: number;

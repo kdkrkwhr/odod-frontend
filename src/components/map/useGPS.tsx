@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import * as Location from "expo-location";
 
-export const useGPS = (interval: number) => {
-  const [updateInterval, setUpdateInterval] = useState<number>(interval);
+export const useGPS = (interval?: number) => {
+  const [updateInterval, setUpdateInterval] = useState<number>(interval || 3000);
   const [region, setRegion] = useState<any>(undefined);
   const [positionText, setPositionText] = useState<string>("Waiting...");
   const [marks, setMarks] = useState<MarkObject[]>([]);
