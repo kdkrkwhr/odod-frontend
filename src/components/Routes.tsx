@@ -14,7 +14,7 @@ const Routes = (props: Props) => {
     <>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Login"
+          initialRouteName="Home"
           screenOptions={{
             headerShown: false,
           }}

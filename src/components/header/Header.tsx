@@ -2,6 +2,7 @@ import React from "react";
 import { View, Image, Text, StyleSheet } from "react-native";
 import { moderateScale, scale, verticalScale } from "../util/Screen";
 import Theme from "../util/Theme";
+import GoBackButton from "./GoBackButton";
 
 type Props = {
   title: string;
@@ -11,7 +12,7 @@ const Header = ({ title }: Props) => {
   return (
     <>
       <View style={styles.header}>
-        <Image style={styles.backBtn} source={Theme.ic_back} />
+        <GoBackButton size={styles.backBtn} />
         <Text style={styles.title}>{title}</Text>
         <Image style={styles.gnbBtn} source={Theme.ic_gnb} />
       </View>
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     backgroundColor: "black",
-    width: scale(375),
+    width: "100%",
     height: verticalScale(50),
 
     justifyContent: "space-between",
