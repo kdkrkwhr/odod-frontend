@@ -1,22 +1,18 @@
-import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { View, Image, Text, StyleSheet } from "react-native";
 import { moderateScale, scale, verticalScale } from "../util/Screen";
 import Theme from "../util/Theme";
+import GoBackButton from "./GoBackButton";
 
 type Props = {
   title: string;
 };
 
 const Header = ({ title }: Props) => {
-  const navigation = useNavigation();
-
   return (
     <>
       <View style={styles.header}>
-        <View onTouchStart={() => navigation.goBack()}>
-          <Image style={styles.backBtn} source={Theme.ic_back} />
-        </View>
+        <GoBackButton size={styles.backBtn} />
         <Text style={styles.title}>{title}</Text>
         <Image style={styles.gnbBtn} source={Theme.ic_gnb} />
       </View>

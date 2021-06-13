@@ -23,6 +23,10 @@ const Home = (props: Props) => {
         <Button title="증가" onPress={() => dispatch(increase())}></Button>
         <Button title="감소" onPress={() => dispatch(decrease())}></Button>
         <Button
+          title="Login"
+          onPress={() => navigation.navigate("Login")}
+        ></Button>
+        <Button
           title="맵이동"
           onPress={() => navigation.navigate("Map")}
         ></Button>
