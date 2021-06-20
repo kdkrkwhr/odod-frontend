@@ -18,10 +18,9 @@ const Home = (props: Props) => {
     <>
       <Header title="HOME"></Header>
       <View style={styles.container}>
-        <Text>Home</Text>
-        <Text>{counter.number}</Text>
+        {/* <Text>{counter.number}</Text>
         <Button title="증가" onPress={() => dispatch(increase())}></Button>
-        <Button title="감소" onPress={() => dispatch(decrease())}></Button>
+        <Button title="감소" onPress={() => dispatch(decrease())}></Button> */}
         <Button
           title="Login"
           onPress={() => navigation.navigate("Login")}
@@ -29,6 +28,10 @@ const Home = (props: Props) => {
         <Button
           title="맵이동"
           onPress={() => navigation.navigate("Map")}
+        ></Button>
+        <Button
+          title="맵게시글"
+          onPress={() => navigation.navigate("ImagePickerExample")}
         ></Button>
       </View>
     </>

@@ -1,7 +1,8 @@
-import React, { Component, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import {
   ActivityIndicator,
   Button,
+  Dimensions,
   Image,
   Share,
   StatusBar,
@@ -10,12 +11,16 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import * as Location from "expo-location";
 import { Constants } from "expo";
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
 import { Camera } from "expo-camera";
 import Clipboard from "expo-clipboard";
+import MapView from "react-native-maps";
+import MapDisplay from "../../../components/map/MapDisplay";
 const ImageUpload = () => {
+  const [region, setRegion] = useState({});
   const [permissions, askForPermission] = Permissions.usePermissions(
     Permissions.CAMERA,
     {
@@ -27,6 +32,17 @@ const ImageUpload = () => {
     image: null,
     uploading: false,
   });
+
+  useEffect(() => {
+    (async () => {
+      const permission = await Location.requestForegroundPermissionsAsync();
+      console.log("get permission: ", permission.status);
+      if (!permission || permission.status !== "granted")
+        setPermissionStatus("denied");
+      else setPermissionStatus("granted");
+    })();
+    getCurrentPosition();
+  }, []);
 
   let { image } = state;
 
@@ -172,11 +188,29 @@ const ImageUpload = () => {
 
     return fetch(apiUrl, options);
   }
+
+  const getCurrentPosition = async () => {
+    const res = await Location.getCurrentPositionAsync({ accuracy: 6 });
+    const {
+      coords: { accuracy, latitude, longitude },
+    } = res;
+    console.log("mapRes : ", res);
+    setRegion({
+      latitude: latitude,
+      longitude: longitude,
+      latitudeDelta: 0.001 * 10,
+      longitudeDelta: 0.0008 * 10,
+    });
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar barStyle="default" />
 
       <Text style={styles.exampleText}>Example: Upload ImagePicker result</Text>
+      <View style={styles.map}>
+        <MapView style={styles.map} initialRegion={region}></MapView>
+      </View>
 
       <Button onPress={_pickImage} title="Pick an image from camera roll" />
 
@@ -230,6 +264,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 10,
   },
+  map: {
+    flex: 6,
+    width: "100%",
+  },
 });
 
 export default ImageUpload;
+function setPermissionStatus(arg0: string) {
+  throw new Error("Function not implemented.");
+}
